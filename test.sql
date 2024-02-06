@@ -5,6 +5,8 @@ CREATE TABLE students (
     name_student VARCHAR(35) NOT NULL,
     group_id INT,
     FOREIGN KEY (group_id) REFERENCES groups(id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
 
 );
 
@@ -29,6 +31,8 @@ CREATE TABLE subjects (
     name_subject VARCHAR(30) UNIQUE NOT NULL,
     master_of_subject INT,
     FOREIGN KEY (master_of_subject) REFERENCES teachers(id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
 );
 
 -- Table: ratings
@@ -36,8 +40,12 @@ DROP TABLE IF EXISTS ratings;
 CREATE TABLE ratings(
     id INTEGER PRIMARY KEY AUTOINCREMENT ,
     when_received DATE NOT NULL,
-    id_student INT REFERENCES students(id),
-    id_subjects INT REFERENCES subjects(id),
+    id_student INT REFERENCES students(id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE,
+    id_subjects INT REFERENCES subjects(id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE,
     grade INTEGER
 
 );
