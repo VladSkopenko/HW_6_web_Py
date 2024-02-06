@@ -64,6 +64,7 @@ def seed_rating():
 
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.DEBUG, format="%(threadName)s%(message)s")
     try:
         seed_teachers()
         seed_subject()
