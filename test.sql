@@ -39,7 +39,7 @@ CREATE TABLE subjects (
 DROP TABLE IF EXISTS ratings;
 CREATE TABLE ratings(
     id INTEGER PRIMARY KEY AUTOINCREMENT ,
-    when_received DATE NOT NULL,
+    when_received DATE ,
     id_student INT REFERENCES students(id)
         ON DELETE SET NULL
         ON UPDATE CASCADE,
